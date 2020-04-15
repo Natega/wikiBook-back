@@ -3,11 +3,11 @@ import BookService from "../services/bookService";
 var router = express.Router();
 
 // define the home page route
-router.get("/id/:id", async function (req: any, res: any) {
+router.get("/id/:_id", async function (req: any, res: any) {
   res.setHeader("Content-Type", "text/plain");
   // 5e94b823d9d2ac23527a6f2d
 
-  res.send(await BookService.getBookById(req.params.id));
+  res.send(await BookService.getBookById(req.params._id));
 });
 router.get("/all", async function (req: any, res: any) {
   res.setHeader("Content-Type", "text/plain");
@@ -21,8 +21,8 @@ router.post("/", async function (req: any, res: any) {
 router.delete("/", async function (req: any, res: any) {
   res.setHeader("Content-Type", "text/plain");
   //@TODO error
-  await BookService.deleteBook(req.body.id);
-  res.send({ id: req.body.id });
+  await BookService.deleteBook(req.body._id);
+  res.send({ _id: req.body._id });
 });
 
 module.exports = router;

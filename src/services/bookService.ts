@@ -1,10 +1,9 @@
 import BookModel from "../models/bookModel";
 import { IBook, IBookModel } from "../types/IBook";
-export default class BookService {
-  static bookModel: IBookModel = new BookModel();
 
+export default class BookService {
   static async addBook(myBook: IBook): Promise<{ _id: string }> {
-    const book = this.bookModel;
+    const book = new BookModel();
     book.title = myBook.title;
     book.author = myBook.author;
     book.img = myBook.img;
