@@ -4,7 +4,6 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const result = dotenv.config();
 
-console.log(result.parsed);
 function startServer() {
   const app = express();
   loaders.init({ app });

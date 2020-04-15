@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
-var bodyParser = require("body-parser");
+import bodyParser from "body-parser";
+
 var book = require("../api/book");
 var status = require("../api/status");
 

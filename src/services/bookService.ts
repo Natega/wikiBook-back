@@ -3,14 +3,16 @@ import { IBook, IBookModel } from "../types/IBook";
 export default class BookService {
   static bookModel: IBookModel = new BookModel();
 
-  static async addBooks(myBook: IBook): Promise<void> {
+  static async addBook(myBook: IBook): Promise<{ _id: string }> {
     const book = this.bookModel;
     book.title = myBook.title;
     book.author = myBook.author;
     book.img = myBook.img;
     book.videos = myBook.videos || [];
     book.podcasts = myBook.podcasts || [];
-    await book.save();
+    const bookBdd = await book.save();
+    //@TODO add a builder
+    return { _id: bookBdd._id };
   }
   static async getBooks(): Promise<IBook[]> {
     return await BookModel.find({});
