@@ -15,14 +15,23 @@ router.get("/all", async function (req: any, res: any) {
 });
 router.post("/", async function (req: any, res: any) {
   res.setHeader("Content-Type", "text/plain");
-  //@TODO error
   res.send(await BookService.addBook(req.body));
 });
 router.delete("/", async function (req: any, res: any) {
   res.setHeader("Content-Type", "text/plain");
-  //@TODO error
   await BookService.deleteBook(req.body._id);
   res.send({ _id: req.body._id });
+});
+router.patch("/video/:_id", async function (req: any, res: any) {
+  res.setHeader("Content-Type", "text/plain");
+  await BookService.addVideoBook(req.params._id, req.body.url);
+  res.send({ url: req.body.url });
+});
+
+router.patch("/podcast/:_id", async function (req: any, res: any) {
+  res.setHeader("Content-Type", "text/plain");
+  await BookService.addPodcastBook(req.params._id, req.body.url);
+  res.send({ url: req.body.url });
 });
 
 module.exports = router;

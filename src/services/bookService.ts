@@ -13,6 +13,20 @@ export default class BookService {
     //@TODO add a builder
     return { _id: bookBdd._id };
   }
+  static async addVideoBook(
+    _id: string,
+    url: string
+  ): Promise<{ url: string }> {
+    await BookModel.update({ _id }, { $push: { videos: url } });
+    return { url };
+  }
+  static async addPodcastBook(
+    _id: string,
+    url: string
+  ): Promise<{ url: string }> {
+    await BookModel.update({ _id }, { $push: { videos: url } });
+    return { url };
+  }
   static async getBooks(): Promise<IBook[]> {
     return await BookModel.find({});
   }
